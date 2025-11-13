@@ -1,0 +1,37 @@
+@using System.Diagnostics.Eventing.Reader
+@model LocalMessenger.Models.ViewModel
+
+<form method="post" action="/User/AddUser">
+    <input name="firstName" placeholder="Имя" required />
+    <input name="secondName" placeholder="Фамилия" required />
+    <input name="date" placeholder="Дата рождения" required />
+    <input name="id" placeholder="Айди" required />
+    <button type="submit">Добавить</button>
+</form>
+
+<form method="post" action="/Chat/Send">
+    <input name="id" placeholder="Айди" required />
+    <input name="text" placeholder="Сообщение" required />
+    <button type="submit">Отправить</button>
+</form>
+
+<div>
+    <h3>Список пользователей</h3>
+    @foreach(var user in Model.Users)
+    {
+        <p><b>@user.Value.FirstName @user.Value.SecondName</b> (@user.Value.Date)</p>
+    }
+</div>
+
+<div>
+    <h3>Список сообщений</h3>
+    @foreach(var message in Model.Messages)
+    {
+        @if(message.Person.FirstName == "Аноним"){
+            <p><b>@message.Person.FirstName</b>(@message.TimeStamp): @message.Text</p>
+        }
+        else {
+            <p><b>@message.Person.FirstName @message.Person.SecondName</b>(@message.TimeStamp): @message.Text</p>
+        }
+    }
+</div>
