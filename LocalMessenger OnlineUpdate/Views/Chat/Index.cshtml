@@ -1,0 +1,64 @@
+@using System.Diagnostics.Eventing.Reader
+@model LocalMessenger.Models.ViewModel
+
+<form method="post" action="/User/Add">
+    <input name="firstName" placeholder="Имя" required />
+    <input name="secondName" placeholder="Фамилия" required />
+    <input name="date" placeholder="Дата рождения" required />
+    <input name="id" placeholder="Айди" required />
+    <button type="submit">Добавить</button>
+</form>
+
+<form method="post" action="/Chat/Send">
+    <input name="id" placeholder="Айди" required />
+    <input name="text" placeholder="Сообщение" required />
+    <button type="submit">Отправить</button>
+</form>
+
+<div id = "usersList">
+    <h3>Список пользователей</h3>
+    @foreach(var user in Model.Users)
+    {
+        <p><b>@user.Value.FirstName @user.Value.SecondName</b> (@user.Value.Date)</p>
+    }
+</div>
+
+<div id = "messagesList">
+    <h3>Список сообщений</h3>
+    @foreach(var message in Model.Messages)
+    {
+        @if(message.Person.FirstName == "Аноним"){
+            <p><b>@message.Person.FirstName</b>(@message.TimeStamp): @message.Text</p>
+        }
+        else {
+            <p><b>@message.Person.FirstName @message.Person.SecondName</b>(@message.TimeStamp): @message.Text</p>
+        }
+    }
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .build();
+
+    connection.on("ReceiveUser", function (user) {
+        const usersList = document.getElementById('usersList');
+        const newUser = `<p><b>${user.firstName} ${user.secondName}</b> (${user.date})</p>`;
+        usersList.innerHTML += newUser;
+    });
+
+    connection.on("ReceiveMessage", function (message) {
+        const messagesList = document.getElementById('messagesList');
+        let userDisplay = message.person.firstName === 'Аноним' 
+            ? message.person.firstName 
+            : `${message.person.firstName} ${message.person.secondName}`;
+            
+        const newMessage = `<p><b>${userDisplay}</b>(${message.timeStamp}): ${message.text}</p>`;
+        
+        messagesList.innerHTML += newMessage;
+    });
+
+    connection.start().catch(err => console.error(err.toString()));
+</script>
