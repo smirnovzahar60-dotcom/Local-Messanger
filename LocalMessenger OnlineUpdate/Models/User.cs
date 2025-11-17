@@ -5,6 +5,7 @@ public class User
 {
     public string FirstName { get; set; }
     public string SecondName { get; set; }
-    public string Date { get; set; }
+    public DateTime Date { get; set; }
+    public TimeSpan Age { get; set; }
 }
 }

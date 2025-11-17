@@ -28,6 +28,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Chat}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=User}/{action=Index}/{id?}");
 
 app.MapHub<ChatHub>("/chatHub");
 

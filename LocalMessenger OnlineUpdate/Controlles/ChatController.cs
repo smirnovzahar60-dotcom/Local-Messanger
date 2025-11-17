@@ -14,11 +14,9 @@ public class ChatController : Controller
     }
     public IActionResult Index()
     {
-        var users = UserController.GetUsers();
         var ViewModel = new ViewModel
         {
-            Messages = messages,
-            Users = users
+            Messages = messages
         };
         return View(ViewModel);
     }
@@ -38,7 +36,7 @@ public class ChatController : Controller
                     Num = messages.Count + 1,
                     Person = users[id],
                     Text = text,
-                    TimeStamp = DateTime.Now.ToShortTimeString()
+                    TimeStamp = DateTime.Now
                 };
             }
             else
@@ -49,11 +47,10 @@ public class ChatController : Controller
                     Person = new User
                     {
                         FirstName = "Аноним",
-                        SecondName = "Undefined",
-                        Date = "Undefined"
+                        SecondName = "Undefined"
                     },
                     Text = text,
-                    TimeStamp = DateTime.Now.ToShortTimeString()
+                    TimeStamp = DateTime.Now
                 };
             }
             
