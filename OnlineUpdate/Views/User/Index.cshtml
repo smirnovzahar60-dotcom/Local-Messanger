@@ -13,7 +13,7 @@
     <h3>Список пользователей</h3>
     @foreach(var user in Model.Users)
     {
-        <p><b>@user.Value.FirstName @user.Value.SecondName</b> (@user.Value.Age.Years лет)</p>
+        <p><b>@user.Value.FirstName @user.Value.SecondName</b> (@((int)((DateTime.Now - user.Value.Date).Days / 365.25)) лет)</p>
     }
 </div>
 

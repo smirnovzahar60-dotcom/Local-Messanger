@@ -37,8 +37,7 @@ public class UserController : Controller
             {
                 FirstName = firstName,
                 SecondName = secondName,
-                Date = date,
-                Age = DateTime.Now - date
+                Date = date
             };
             users[id] = newUser;
             await _hubContext.Clients.All.SendAsync("ReceiveUser", newUser);

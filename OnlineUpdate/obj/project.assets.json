@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\z.m.smirnov\\Desktop\\LocalMessenger OnlineUpdate\\LocalMessenger.csproj",
+      "projectUniqueName": "C:\\Users\\z.m.smirnov\\Local-Messanger\\OnlineUpdate\\LocalMessenger.csproj",
       "projectName": "LocalMessenger",
-      "projectPath": "C:\\Users\\z.m.smirnov\\Desktop\\LocalMessenger OnlineUpdate\\LocalMessenger.csproj",
+      "projectPath": "C:\\Users\\z.m.smirnov\\Local-Messanger\\OnlineUpdate\\LocalMessenger.csproj",
       "packagesPath": "C:\\Users\\z.m.smirnov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\z.m.smirnov\\Desktop\\LocalMessenger OnlineUpdate\\obj\\",
+      "outputPath": "C:\\Users\\z.m.smirnov\\Local-Messanger\\OnlineUpdate\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\z.m.smirnov\\AppData\\Roaming\\NuGet\\NuGet.Config",

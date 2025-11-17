@@ -81,3 +81,31 @@ C:\Users\z.m.smirnov\Desktop\LocalMessenger OnlineUpdate\obj\Debug\net8.0\refint
 C:\Users\z.m.smirnov\Desktop\LocalMessenger OnlineUpdate\obj\Debug\net8.0\LocalMessenger.pdb
 C:\Users\z.m.smirnov\Desktop\LocalMessenger OnlineUpdate\obj\Debug\net8.0\LocalMessenger.genruntimeconfig.cache
 C:\Users\z.m.smirnov\Desktop\LocalMessenger OnlineUpdate\obj\Debug\net8.0\ref\LocalMessenger.dll
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\appsettings.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\LocalMessenger.exe
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\LocalMessenger.deps.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\LocalMessenger.runtimeconfig.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\LocalMessenger.dll
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\bin\Debug\net8.0\LocalMessenger.pdb
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.AssemblyInfoInputs.cache
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.AssemblyInfo.cs
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.csproj.CoreCompileInputs.cache
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.RazorAssemblyInfo.cache
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.RazorAssemblyInfo.cs
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.sourcelink.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets\msbuild.LocalMessenger.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets\msbuild.build.LocalMessenger.props
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LocalMessenger.props
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LocalMessenger.props
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\scopedcss\bundle\LocalMessenger.styles.css
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.dll
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\refint\LocalMessenger.dll
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.pdb
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\LocalMessenger.genruntimeconfig.cache
+C:\Users\z.m.smirnov\Local-Messanger\OnlineUpdate\obj\Debug\net8.0\ref\LocalMessenger.dll
