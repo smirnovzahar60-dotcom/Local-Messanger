@@ -11,12 +11,7 @@
     <h3>Список сообщений</h3>
     @foreach(var message in Model.Messages)
     {
-        @if(message.Person.FirstName == "Аноним"){
-            <p><b>@message.Person.FirstName</b>(@message.TimeStamp): @message.Text</p>
-        }
-        else {
-            <p><b>@message.Person.FirstName @message.Person.SecondName</b>(@message.TimeStamp.ToShortTimeString()): @message.Text</p>
-        }
+        <p><b>@message.Person.FirstName @message.Person.SecondName</b>(@message.TimeStamp.ToShortTimeString()): @message.Text</p>
     }
 </div>
 
@@ -29,12 +24,9 @@
 
     connection.on("ReceiveMessage", function (message) {
         const messagesList = document.getElementById('messagesList');
-        let userDisplay = message.person.firstName === 'Аноним' 
-            ? message.person.firstName 
-            : `${message.person.firstName} ${message.person.secondName}`;
-            
-        const newMessage = `<p><b>${userDisplay}</b>(${message.timeStamp.ToShortTimeString()}): ${message.text}</p>`;
-        
+        const messageTime = new Date(message.timeStamp);
+        const timeString = messageTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        const newMessage = `<p><b>${message.person.firstName} ${message.person.secondName}</b>(${timeString}): ${message.text}</p>`;
         messagesList.innerHTML += newMessage;
     });
 

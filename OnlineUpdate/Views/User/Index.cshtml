@@ -26,7 +26,10 @@
 
     connection.on("ReceiveUser", function (user) {
         const usersList = document.getElementById('usersList');
-        const newUser = `<p><b>${user.FirstName} ${user.SecondName}</b> (${user.Age.Years} лет)</p>`;
+        const birthDate = new Date(user.date);
+        const today = new Date();
+        const age = Math.floor((today - birthDate) / (365.25 * 24 * 60 * 60 * 1000));
+        const newUser = `<p><b>${user.firstName} ${user.secondName}</b> (${age} лет)</p>`;
         usersList.innerHTML += newUser;
     });
 

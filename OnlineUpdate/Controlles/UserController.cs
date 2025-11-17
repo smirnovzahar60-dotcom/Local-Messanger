@@ -31,7 +31,7 @@ public class UserController : Controller
 
     public async Task<IActionResult> Add(string firstName, string secondName, DateTime date, string id)
     {
-        if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(secondName) /*&& !string.IsNullOrEmpty(date)*/ && !string.IsNullOrEmpty(id))
+        if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(secondName) && !string.IsNullOrEmpty(id))
         {
             var newUser = new User
             {

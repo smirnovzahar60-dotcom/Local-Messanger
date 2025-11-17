@@ -26,36 +26,20 @@ public class ChatController : Controller
     {
         if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(id))
         {
-            Message newMessage;
             var users = UserController.GetUsers();
             
             if (users.ContainsKey(id))
             {
-                newMessage = new Message
+                var newMessage = new Message
                 {
                     Num = messages.Count + 1,
                     Person = users[id],
                     Text = text,
                     TimeStamp = DateTime.Now
                 };
+                messages.Add(newMessage);
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", newMessage);
             }
-            else
-            {
-                newMessage = new Message
-                {
-                    Num = messages.Count + 1,
-                    Person = new User
-                    {
-                        FirstName = "Аноним",
-                        SecondName = "Undefined"
-                    },
-                    Text = text,
-                    TimeStamp = DateTime.Now
-                };
-            }
-            
-            messages.Add(newMessage);
-            await _hubContext.Clients.All.SendAsync("ReceiveMessage", newMessage);
         }
         return RedirectToAction("Index");
     }
