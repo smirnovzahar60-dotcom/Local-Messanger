@@ -1,20 +1,23 @@
-@using System.Diagnostics.Eventing.Reader
 @model LocalMessenger.Models.ViewModel
 
 <form method="post" action="/Chat/Send">
-    <input name="id" placeholder="Айди" required />
+    <input name="id" placeholder="Ваш ID" required />
     <input name="text" placeholder="Сообщение" required />
     <button type="submit">Отправить</button>
 </form>
 
-<div id = "messagesList">
+<hr />
+
+<div id="messagesList">
     <h3>Список сообщений</h3>
-    @foreach(var message in Model.Messages)
+    @foreach (var message in Model.Messages)
     {
-        <p><b>@message.Person.FirstName @message.Person.SecondName</b>(@message.TimeStamp.ToShortTimeString()): @message.Text</p>
+        <p>
+            <b>@message.Person.FirstName @message.Person.SecondName</b> 
+            [@message.TimeStamp.ToShortTimeString()]: @message.Text
+        </p>
     }
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
 <script>
@@ -26,9 +29,21 @@
         const messagesList = document.getElementById('messagesList');
         const messageTime = new Date(message.timeStamp);
         const timeString = messageTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        const newMessage = `<p><b>${message.person.firstName} ${message.person.secondName}</b>(${timeString}): ${message.text}</p>`;
+        const newMessage = `<p><b>${message.person.firstName} ${message.person.secondName}</b> [${timeString}]: ${message.text}</p>`;
         messagesList.innerHTML += newMessage;
     });
 
     connection.start().catch(err => console.error(err.toString()));
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const messageInput = form.querySelector('input[name="text"]');
+        
+        form.addEventListener('submit', function(event) {
+            setTimeout(() => {
+                messageInput.value = '';
+                messageInput.focus();
+            }, 100);
+        });
+    });
 </script>

@@ -1,22 +1,27 @@
-@using System.Diagnostics.Eventing.Reader
 @model LocalMessenger.Models.ViewModel
 
 <form method="post" action="/User/Add">
     <input name="firstName" placeholder="Имя" required />
     <input name="secondName" placeholder="Фамилия" required />
     <input name="date" type="date" placeholder="Дата рождения" required />
-    <input name="id" placeholder="Айди" required />
-    <button type="submit">Добавить</button>
+    <input name="id" placeholder="Ваш уникальный ID" required />
+    <button type="submit">Добавить пользователя</button>
 </form>
 
-<div id = "usersList">
+<hr />
+
+<div id="usersList">
     <h3>Список пользователей</h3>
-    @foreach(var user in Model.Users)
+    @foreach (var userEntry in Model.Users)
     {
-        <p><b>@user.Value.FirstName @user.Value.SecondName</b> (@((int)((DateTime.Now - user.Value.Date).Days / 365.25)) лет)</p>
+        var user = userEntry.Value;
+        var age = (int)((DateTime.Now - user.Date).Days / 365.25);
+        <p>
+            <b>@user.FirstName @user.SecondName</b> 
+            (@age лет)
+        </p>
     }
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
 <script>

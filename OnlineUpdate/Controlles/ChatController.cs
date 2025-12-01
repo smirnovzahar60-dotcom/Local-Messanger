@@ -2,45 +2,68 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using LocalMessenger.Models;
 using SignalRApp;
-using System.Collections.Generic;
+using LocalMessenger.Data;
+using Microsoft.EntityFrameworkCore;
 
 public class ChatController : Controller
 {
-    private static List<Message> messages = new();
     private readonly IHubContext<ChatHub> _hubContext;
-    public ChatController(IHubContext<ChatHub> hubContext)
+    private readonly SettingsBD _context;
+    
+    public ChatController(IHubContext<ChatHub> hubContext, SettingsBD context)
     {
         _hubContext = hubContext;
+        _context = context;
     }
+    
     public IActionResult Index()
     {
-        var ViewModel = new ViewModel
+        // Загружаем сообщения с пользователями
+        var messages = _context.Messages
+            .Include(m => m.Person)
+            .OrderBy(m => m.Num)
+            .ToList();
+        
+        var viewModel = new ViewModel
         {
             Messages = messages
         };
-        return View(ViewModel);
+        
+        return View(viewModel);
     }
-
+    
     [HttpPost]
     public async Task<IActionResult> Send(string text, string id)
     {
         if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(id))
         {
-            var users = UserController.GetUsers();
+            // Ищем пользователя по ExternalId
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.ExternalId == id);
             
-            if (users.ContainsKey(id))
+            if (user != null)
             {
+                // Получаем следующий номер сообщения
+                var nextNum = _context.Messages.Any() 
+                    ? _context.Messages.Max(m => m.Num) + 1 
+                    : 1;
+                
                 var newMessage = new Message
                 {
-                    Num = messages.Count + 1,
-                    Person = users[id],
+                    Num = nextNum,
+                    Person = user,
+                    UserId = user.Id,
                     Text = text,
                     TimeStamp = DateTime.Now
                 };
-                messages.Add(newMessage);
+                
+                _context.Messages.Add(newMessage);
+                await _context.SaveChangesAsync();
+                
                 await _hubContext.Clients.All.SendAsync("ReceiveMessage", newMessage);
             }
         }
+        
         return RedirectToAction("Index");
     }
 }
