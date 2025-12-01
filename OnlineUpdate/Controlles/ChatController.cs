@@ -21,7 +21,6 @@ public class ChatController : Controller
         // Загружаем сообщения с пользователями
         var messages = _context.Messages
             .Include(m => m.Person)
-            .OrderBy(m => m.Num)
             .ToList();
         
         var viewModel = new ViewModel
@@ -43,14 +42,8 @@ public class ChatController : Controller
             
             if (user != null)
             {
-                // Получаем следующий номер сообщения
-                var nextNum = _context.Messages.Any() 
-                    ? _context.Messages.Max(m => m.Num) + 1 
-                    : 1;
-                
                 var newMessage = new Message
                 {
-                    Num = nextNum,
                     Person = user,
                     UserId = user.Id,
                     Text = text,

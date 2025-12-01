@@ -8,9 +8,6 @@ namespace LocalMessenger.Models
         [Key]
         public int Id { get; set; }
         
-        [Required]
-        public int Num { get; set; }
-        
         [ForeignKey("User")]
         public int UserId { get; set; }
         
